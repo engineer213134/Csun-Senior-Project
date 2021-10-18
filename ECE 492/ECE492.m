@@ -15,12 +15,12 @@ im=edge(Ig,'sobel');
 imshow(im)
 %Next two codes make the edges smooth and fills the holes
 %connects the edge lines by using diamonds 
-im=imdilate(im,strel('diamond',2));
+im=imdilate(im,strel('diamond',1));
 %fill the holes
 >> imf=imfill(im,'holes');
 imshow(imf)
  % The next line will give us the ability to draw a ractangular region on licence plate numbers and seperate it from rest of the image using (roi) option which was not used in previous code
-figure; imshow(imer); roi = round(getPosition(imrect));
+figure; imshow(imf); roi = round(getPosition(imrect));
  %run OCR
 >> results = ocr(imer,roi);
  %OCR results
