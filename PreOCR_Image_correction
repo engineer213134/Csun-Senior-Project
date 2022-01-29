@@ -1,0 +1,41 @@
+% pulls images from specific path folders Low contrast,Low saturation
+
+
+
+
+
+original_files=dir(['/home/compuser/Desktop/testImage/testfoldercontrast','/*.png']); % for this case jpg 
+    for k=1:length(original_files) 
+    filename=fullfile('/home/compuser/Desktop/testImage/testfoldercontrast', original_files(k).name); 
+    image_orginal=imread(filename);
+    disp('For image :'),disp(filename),disp('----------');    
+    I2 = filename;  
+        
+     %call the low contrast function
+     subplot(2,1,1);
+     imshow(I2); 
+     title('Before contrast adjustment');
+     hold;
+     y = contrast_Function(I2);
+    end
+    
+
+original_files=dir(['/home/compuser/Desktop/testImage/testfoldersaturation','/*.jpg']); % for this case jpg 
+    for k=1:length(original_files) 
+    filename=fullfile('/home/compuser/Desktop/testImage/testfoldersaturation', original_files(k).name); 
+    image_orginal=imread(filename);
+    disp('For image :'),disp(filename),disp('----------');   
+     I2 = filename; 
+     %call the low saturation function
+     subplot(1,2,1);
+     imshow(I2);
+     title('Before saturation adjustment');
+     hold;
+     Saturation_Function(I2);
+     
+        
+    end
+    
+    
+    
+   
