@@ -1,0 +1,47 @@
+%Brightness measurments,Contrast measurments,Resolution,Saturation,Tempeture(HUE)
+
+path_directory='/home/compuser/Desktop'; % 'Folder name' 
+maxAvgS = 0;
+dataS = 0;
+original_files=dir(['/home/compuser/Desktop/testImage/testfolder','/*.png']); % for this case jpg 
+    for k=1:length(original_files) 
+    filename=fullfile('/home/compuser/Desktop/testImage/testfolder', original_files(k).name); 
+    image_orginal=imread(filename);
+    disp('For image :'),disp(filename),disp('----------');
+
+    %Brightness Operation  
+    brightness = mean2(image_orginal);
+    disp('Brightness : '),disp(brightness);
+    disp('   ');
+    
+    %Operation Contrast   
+    grayImage = im2gray(image_orginal);
+    image_contrast = max(grayImage(:)) - min(grayImage(:));
+    disp('Contrast : '),disp(image_contrast);
+    disp('   ');
+    
+    %Operation resolution   
+    info = imfinfo(filename);
+    w = info.Width;  %An integer indicating the width of the image in pixels
+    h = info.Height; %An integer indicating the height of the image in pixels
+    Y = h * w;
+    disp('Resolution : '),disp(Y);
+    disp('   ');
+    
+    %Operation Saturation 
+    image_orginal=imread(filename);       
+    hsv = rgb2hsv(image_orginal);
+    s = hsv(:,:,2);
+    avgS = mean(s(:));
+    disp('Saturation : '),disp(avgS); 
+    disp('   ');
+
+    %Operation Tempeture(Hue)
+    hsv = rgb2hsv(image_orginal);
+    h = hsv(:,:,1);
+    avgH = mean(h(:));
+    disp('Hue : '),disp(avgH); 
+    disp('   ');
+    disp('-------------------------------------------');   
+    end 
+
