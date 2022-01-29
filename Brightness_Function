@@ -1,0 +1,9 @@
+function y = bright_Function(I2)
+y = I2 + 80;
+%Brightened image 
+subplot(2,1,2);
+imshow(y);
+title('After Brightened');
+hold;
+return;
+end
