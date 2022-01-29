@@ -1,0 +1,16 @@
+function  Saturation_Function(I2)
+    [RGB, map] = imread(I2); 
+    [X,map] = rgb2ind(RGB,20) ;
+    RGB = ind2rgb(X,map);
+    LAB = rgb2lab(RGB);
+    hsvImage = rgb2hsv(LAB); 
+    hsvImage(:,:,2) = 3; % this i need to fix to adjust saturation
+    PIC = hsv2rgb(hsvImage);
+    subplot(1,2,2);
+    imshow(PIC);
+    title('After Saturation adjustment');  
+    newmap = gray(80);
+    imwrite(PIC,newmap,'/home/compuser/Desktop/testImage/output.png','png')
+
+return;
+end
