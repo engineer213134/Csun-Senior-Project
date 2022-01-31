@@ -1,0 +1,17 @@
+function y = BadImage_Function(I2,k)    
+%Adjust Contrast image
+I2 = imread(I2);
+y = im2gray(I2);
+x = imadjust(y);
+%Sharpen Image
+z = imsharpen(x,'Radius',4,'Amount',1.2);
+%Image resize
+I=imresize(z,6);
+subplot(2,1,2);
+imshow(I);
+title('After Bad Image Adjustment');
+%Save Files
+imwrite(I,['/home/compuser/Desktop/testImage/BadImages/bad_Image' ,num2str(k) ,'.jpg']);
+
+return;
+end
